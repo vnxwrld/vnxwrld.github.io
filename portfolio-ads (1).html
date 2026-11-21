@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de estudante de Análise e Desenvolvimento de Sistemas.">
+  <title>Vinicius | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080b12;--panel:#101622;--panel2:#141d2b;--text:#edf2fa;--muted:#9aa8bb;--line:#263247;--accent:#75f0c0;--blue:#79aaff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1100px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:#080b12dc;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
+    .scroll-progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent);box-shadow:0 0 12px var(--accent);z-index:11}
+    .hero:before,.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(90px);opacity:.13;pointer-events:none;z-index:-1;animation:orbFloat 9s ease-in-out infinite alternate}
+    .hero:before{background:var(--accent);top:8%;left:-100px}.hero:after{background:var(--blue);right:-90px;bottom:8%;animation-delay:-4s}
+    @keyframes orbFloat{from{transform:translate(0,0) scale(.9)}to{transform:translate(35px,-25px) scale(1.15)}}
+    .cursor{color:var(--accent);animation:blink .8s steps(2,start) infinite}
+    @keyframes blink{to{visibility:hidden}}
+    .hero-card{transform-style:preserve-3d;transition:transform .18s ease,box-shadow .25s ease}
+    .hero-card:hover{box-shadow:0 35px 100px #000a,0 0 35px #75f0c018}
+    .btn{position:relative;overflow:hidden}
+    .btn:after{content:"";position:absolute;top:-60%;left:-70%;width:45%;height:220%;background:#ffffff55;transform:rotate(25deg);transition:left .55s}
+    .btn:hover:after{left:140%}
+    .skill,.project,.info-box,.language{transition:transform .25s ease,border-color .25s ease,background .25s ease}
+    .skill:hover,.language:hover{transform:translateY(-4px);border-color:#75f0c077;background:#172333}
+    .section-tag{display:inline-block;animation:tagGlow 3s ease-in-out infinite alternate}
+    @keyframes tagGlow{to{text-shadow:0 0 14px #75f0c077}}
+    @media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.cursor,.section-tag{animation:none!important}.hero-card{transform:none!important}}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font:500 17px 'DM Mono',monospace;letter-spacing:-1px}.logo span{color:var(--accent)}
+    .links{display:flex;gap:28px;align-items:center;color:var(--muted);font-size:13px}
+    .links a:hover{color:var(--accent)}
+    .menu{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px 11px;border-radius:8px}
+    .hero{min-height:660px;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:60px;padding:95px 0 110px;position:relative}
+    .eyebrow{font:12px 'DM Mono',monospace;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+    h1{font-size:clamp(43px,7vw,76px);line-height:1.08;letter-spacing:-4px;margin-bottom:24px}
+    h1 span{color:var(--accent)}
+    .intro{color:var(--muted);font-size:16px;max-width:590px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}
+    .btn{padding:13px 19px;border-radius:8px;font-size:13px;font-weight:800;border:1px solid var(--accent);transition:.2s}
+    .primary{background:var(--accent);color:#07120e}.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #75f0c022}
+    .secondary{color:var(--text);border-color:var(--line)}
+    .hero-card{border:1px solid var(--line);background:linear-gradient(145deg,#141e2d,#0d121c);border-radius:18px;padding:28px;box-shadow:0 30px 100px #0008;position:relative}
+    .hero-card:before{content:"";position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,#75f0c055,transparent 45%,#79aaff33);z-index:-1;filter:blur(18px)}
+    .terminal-top{display:flex;gap:7px;margin-bottom:25px}.dot{width:8px;height:8px;border-radius:50%;background:#526078}
+    .terminal-label{font:11px 'DM Mono',monospace;color:var(--muted);margin-left:auto}
+    .code{font:13px/2 'DM Mono',monospace;color:#b8c7da;white-space:pre-wrap}
+    .code .green{color:var(--accent)}.code .blue{color:var(--blue)}
+    section{padding:95px 0;border-top:1px solid #ffffff10}
+    .section-tag{font:11px 'DM Mono',monospace;color:var(--accent);letter-spacing:2px;text-transform:uppercase}
+    h2{font-size:clamp(29px,4vw,43px);letter-spacing:-1.8px;margin:10px 0 34px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px}
+    .about-grid p{color:var(--muted);font-size:15px;margin-bottom:15px}
+    .info-box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:23px}
+    .info-box small{color:var(--accent);font:11px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+    .info-box h3{font-size:18px;margin:9px 0 5px}.info-box p{margin:0;font-size:13px}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .skill{padding:19px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+    .skill b{font-size:14px}.skill span{display:block;color:var(--muted);font:11px 'DM Mono',monospace;margin-top:6px}
+    .languages{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:28px}
+    .language{padding:23px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+    .language strong{font-size:16px}.language span{font:11px 'DM Mono',monospace;color:var(--accent)}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:23px;transition:.25s}
+    .project:hover{transform:translateY(-5px);border-color:#75f0c077}
+    .project .num{font:11px 'DM Mono',monospace;color:var(--accent)}
+    .project h3{margin:18px 0 8px;font-size:18px}.project p{font-size:13px;color:var(--muted);min-height:66px}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}.tags span{font:10px 'DM Mono',monospace;color:#b6c6da;background:#202c3d;padding:5px 8px;border-radius:5px}
+    .contact{display:flex;justify-content:space-between;align-items:center;gap:30px;background:linear-gradient(110deg,#142437,#101923);border:1px solid var(--line);border-radius:16px;padding:35px}
+    .contact h2{margin:8px 0}.contact p{color:var(--muted);font-size:14px}
+    footer{padding:28px 0;color:var(--muted);font:11px 'DM Mono',monospace;display:flex;justify-content:space-between}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;gap:35px;min-height:auto;padding:80px 0}.hero-card{max-width:550px}.about-grid{grid-template-columns:1fr;gap:25px}.skills{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.wrap{width:min(100% - 30px,1100px)}nav{height:66px}.menu{display:block}.links{display:none;position:absolute;top:66px;left:0;right:0;background:#0c111b;padding:22px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}.links.open{display:flex}h1{letter-spacing:-2.5px}.hero{padding:65px 0 75px}section{padding:70px 0}.projects{grid-template-columns:1fr}.languages{grid-template-columns:1fr}.contact{align-items:flex-start;flex-direction:column}footer{gap:12px;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#inicio">&lt;<span>Vinicius-Santos</span>/&gt;</a>
+    <button class="menu" id="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="links" id="links">
+      <a href="#sobre">Sobre</a><a href="#habilidades">Habilidades</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="wrap">
+    <section class="hero" id="inicio" style="border:0">
+      <div class="reveal">
+        <div class="eyebrow">Olá, mundo! Meu nome é Vinicius</div>
+        <h1>Vinicius Santos<span>.</span><br><span id="typing" aria-label="Estudante de tecnologia">Estudante de tecnologia.</span><span class="cursor" aria-hidden="true">|</span></h1>
+        <p class="intro">Sou estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia, desenvolvimento de soluções e aprendizado contínuo. Também possuo inglês e espanhol em nível avançado.</p>
+        <div class="actions"><a class="btn primary" href="#projetos">Ver projetos ↗</a><a class="btn secondary" href="#contato">Entre em contato</a></div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="terminal-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="terminal-label">about-me.js</span></div>
+        <div class="code"><span class="blue">const</span> developer = {
+  name: <span class="green">"Vinicius"</span>,
+  education: <span class="green">"Análise e Desenvolvimento de Sistemas"</span>,
+  languages: [
+    <span class="green">"Português"</span>,
+    <span class="green">"English — Advanced"</span>,
+    <span class="green">"Español — Avanzado"</span>
+  ],
+  mindset: <span class="green">"Always learning"</span>,
+  status: <span class="green">"Open to opportunities"</span>
+};</div>
+      </div>
+    </section>
+
+    <section id="sobre" class="reveal">
+      <div class="section-tag">01 / Sobre mim</div><h2>Construindo meu caminho na tecnologia.</h2>
+      <div class="about-grid">
+        <div><p>Atualmente curso Análise e Desenvolvimento de Sistemas, desenvolvendo conhecimentos em lógica de programação, desenvolvimento de software, banco de dados e tecnologia.</p><p>Gosto de transformar ideias em soluções funcionais, explorar novas ferramentas e evoluir constantemente como profissional.</p></div>
+        <div class="info-box"><small>Formação acadêmica</small><h3>Análise e Desenvolvimento de Sistemas</h3><p>Curso superior em andamento · Instituição de ensino</p></div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="reveal">
+      <div class="section-tag">02 / Competências</div><h2>Habilidades & conhecimentos.</h2>
+      <div class="skills">
+        <div class="skill"><b>JavaScript</b><span>DESENVOLVIMENTO</span></div>
+        <div class="skill"><b>HTML5 & CSS3</b><span>FRONT-END</span></div>
+        <div class="skill"><b>Lógica de programação</b><span>FUNDAMENTOS</span></div>
+        <div class="skill"><b>Git & GitHub</b><span>VERSIONAMENTO</span></div>
+        <div class="skill"><b>Banco de dados</b><span>SQL · FUNDAMENTOS</span></div>
+        <div class="skill"><b>Resolução de problemas</b><span>SOFT SKILL</span></div>
+        <div class="skill"><b>Trabalho em equipe</b><span>SOFT SKILL</span></div>
+        <div class="skill"><b>Aprendizado contínuo</b><span>MINDSET</span></div>
+      </div>
+      <div class="languages">
+        <div class="language"><strong>🇺🇸 Inglês</strong><span>NÍVEL AVANÇADO</span></div>
+        <div class="language"><strong>🇪🇸 Espanhol</strong><span>NÍVEL AVANÇADO</span></div>
+      </div>
+    </section>
+
+    <section id="projetos" class="reveal">
+      <div class="section-tag">03 / Portfólio</div><h2>Projetos em destaque.</h2>
+      <div class="projects">
+        <article class="project"><div class="num">PROJETO_01</div><h3>Website responsivo</h3><p>Desenvolvimento de uma página web adaptável para diferentes tamanhos de tela.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
+        <article class="project"><div class="num">PROJETO_02</div><h3>Aplicação interativa</h3><p>Uma aplicação com interações dinâmicas e manipulação de elementos da página.</p><div class="tags"><span>JavaScript</span><span>DOM</span></div></article>
+        <article class="project"><div class="num">PROJETO_03</div><h3>Projeto acadêmico</h3><p>Espaço para apresentar um projeto desenvolvido durante o curso e seus aprendizados.</p><div class="tags"><span>ADS</span><span>Em desenvolvimento</span></div></article>
+      </div>
+    </section>
+
+    <section id="contato" class="reveal">
+      <div class="contact">
+        <div><div class="section-tag">04 / Contato</div><h2>Vamos conversar?</h2><p>Estou aberto a oportunidades, conexões e novos desafios na área de tecnologia.</p></div>
+        <div class="actions"><a class="btn primary" href="emailto:viniciussilva.contato@hotmail.com">Enviar e-mail ↗</a><a class="btn secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn secondary" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="wrap"><span>© <span id="year"></span> Vinicius Santos. Todos os direitos reservados.</span><span>Desenvolvido com HTML, CSS & JavaScript.</span></footer>
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Efeito de digitação com troca de frases
+  const typing = document.querySelector('#typing');
+  const phrases = ['Estudante de tecnologia.', 'Desenvolvedor em formação.', 'Apaixonado por inovação.'];
+  if (!reduceMotion && typing) {
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let deleting = false;
+    function typeLoop() {
+      const current = phrases[phraseIndex];
+      if (!deleting) {
+        charIndex++;
+        typing.textContent = current.slice(0, charIndex);
+        if (charIndex >= current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1500);
+          return;
+        }
+      } else {
+        charIndex--;
+        typing.textContent = current.slice(0, charIndex);
+        if (charIndex <= 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 38 : 75);
+    }
+    setTimeout(typeLoop, 1600);
+  }
+
+  // Barra de progresso conforme a rolagem da página
+  const progress = document.querySelector('#scroll-progress');
+  function updateProgress() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+    progress.style.width = percent + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Inclinação 3D sutil no cartão de código (somente em dispositivos com mouse)
+  const codeCard = document.querySelector('.hero-card');
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    codeCard.addEventListener('mousemove', event => {
+      const rect = codeCard.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      codeCard.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-3px)`;
+    });
+    codeCard.addEventListener('mouseleave', () => codeCard.style.transform = '');
+  }
+
+  const menu = document.querySelector('#menu');
+  const links = document.querySelector('#links');
+  menu.addEventListener('click', () => {
+    const opened = links.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(opened));
+  });
+  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    links.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+  }));
+  document.querySelector('#year').textContent = new Date().getFullYear();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+</script>
+</body>
+</html>
